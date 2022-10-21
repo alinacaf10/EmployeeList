@@ -11,39 +11,40 @@ public class Main {
     public static void main(String[] args) {
     int id=1;
 
-        JFrame frame=new JFrame("Employers");
-        JButton button=new JButton("Save");
-        button.setBounds(100,200,100,30);
+    JFrame frame=new JFrame("Employers");
+    JButton button=new JButton("Save");
+    button.setBounds(100,300,100,30);
+
     JLabel lblhigh=new JLabel("Employee List");
     lblhigh.setFont(new Font("Serif", Font.PLAIN, 22));
-    lblhigh.setBounds(210,20,1000,30);
+    lblhigh.setBounds(210,120,1000,30);
 
 
     JLabel lbl1=new JLabel("First Name:");
-    lbl1.setBounds(20,70,100,20);
+    lbl1.setBounds(20,170,100,20);
     JTextField text1=new JTextField();
-    text1.setBounds(100,70,120,25);
+    text1.setBounds(100,170,120,25);
 
     JLabel lbl2=new JLabel("Last Name:");
-    lbl2.setBounds(20,130,100,20);
+    lbl2.setBounds(20,230,100,20);
     JTextField text2=new JTextField();
-    text2.setBounds(100,130,120,25);
+    text2.setBounds(100,230,120,25);
 
         DefaultTableModel model = new DefaultTableModel();
         JTable table = new JTable(model);
 
-// Create a couple of columns
         model.addColumn("Col1");
         model.addColumn("Col2");
+        model.addColumn("Col3");
 
-// Append a row
 
         button.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                model.addRow(new Object[]{text1.getText(), text2.getText()});
+
+                model.addRow(new Object[]{id,text1.getText(), text2.getText()});
 
             }
         });
@@ -53,9 +54,9 @@ public class Main {
 
 
     frame.setVisible(true);
-    frame.setSize(400,400);
-        frame.add(button);
-        frame.add(lblhigh);
+    frame.setSize(600,600);
+    frame.add(button);
+    frame.add(lblhigh);
     frame.add(lbl1);
     frame.add(lbl2);
     frame.add(text1);

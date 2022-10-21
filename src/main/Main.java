@@ -15,6 +15,8 @@ public class Main {
     JFrame frame=new JFrame("Employers list");
     JButton button=new JButton("Save");
     button.setBounds(100,600,100,30);
+    JButton delete=new JButton("Delete");
+    delete.setBounds(220,600,100,30);
     JPanel panel=new JPanel();
 
     JLabel lblhigh=new JLabel("Add to Employers List");
@@ -36,7 +38,7 @@ public class Main {
 
         DefaultTableModel model = new DefaultTableModel();
         JTable table = new JTable(model);
-        JScrollPane sp=new JScrollPane(table);
+        JScrollPane sp = new JScrollPane(table);
 
         model.addColumn("ID");
         model.addColumn("Name");
@@ -57,20 +59,28 @@ public class Main {
             }
             }
         });
-
-
-
+        delete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] rows = table.getSelectedRows();
+                for(int i=0;i<rows.length;i++){
+                    model.removeRow(rows[i]-i);
+                }
+            }
+        });
 
 
     frame.setVisible(true);
     frame.setSize(700,700);
     frame.add(button);
+    frame.add(delete);
     frame.add(lblhigh);
     frame.add(lbl1);
     frame.add(lbl2);
     frame.add(text1);
     frame.add(text2);
     frame.add(sp);
+    frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 
     }
 }

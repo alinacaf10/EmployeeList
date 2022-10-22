@@ -15,9 +15,13 @@ public class Main {
     JFrame frame=new JFrame("Employers list");
     JButton button=new JButton("Save");
     button.setBounds(100,600,100,30);
+    JButton update=new JButton("Update");
+    update.setBounds(220,600,100,30);
+
     JButton delete=new JButton("Delete");
-    delete.setBounds(220,600,100,30);
+    delete.setBounds(340,600,100,30);
     JPanel panel=new JPanel();
+
 
     JLabel lblhigh=new JLabel("Add to Employers List");
     lblhigh.setFont(new Font("Serif", Font.PLAIN, 22));
@@ -34,7 +38,6 @@ public class Main {
     JTextField text2=new JTextField();
     text2.setBounds(100,530,120,25);
 
-        String[] name={"ID","Name","Surname"};
 
         DefaultTableModel model = new DefaultTableModel();
         JTable table = new JTable(model);
@@ -57,6 +60,17 @@ public class Main {
             else {
             JOptionPane.showMessageDialog(frame,"List is full");
             }
+            text1.setText("");
+            text2.setText("");
+
+            }
+        });
+        update.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] row = table.getSelectedRows();
+                text1.setText(String.valueOf(row[1]));
+                text2.setText(String.valueOf(row[2]));
             }
         });
         delete.addActionListener(new ActionListener() {
@@ -74,6 +88,7 @@ public class Main {
     frame.setSize(700,700);
     frame.add(button);
     frame.add(delete);
+    frame.add(update);
     frame.add(lblhigh);
     frame.add(lbl1);
     frame.add(lbl2);
